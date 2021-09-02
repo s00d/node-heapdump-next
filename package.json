@@ -30,6 +30,7 @@
     "prebuild-install": "^6.1.4"
   },
   "devDependencies": {
+    "@types/node": "^16.7.10",
     "prebuild": "^10.0.1",
     "shelljs": "^0.8.4",
     "tap": "^15.0.9",
