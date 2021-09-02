@@ -1,6 +1,6 @@
 {
   "name": "heapdump",
-  "version": "0.3.15",
+  "version": "1.0.0",
   "description": "Make a dump of the V8 heap for later inspection.",
   "homepage": "https://github.com/bnoordhuis/node-heapdump",
   "author": {
@@ -21,10 +21,10 @@
   },
   "dependencies": {
     "nan": "^2.15.0",
-    "prebuild-install": "^6.1.0"
+    "prebuild-install": "^6.1.4"
   },
   "devDependencies": {
-    "prebuild": "^10.0.0",
+    "prebuild": "^10.0.1",
     "shelljs": "^0.8.4",
     "tap": "^15.0.9"
   }
