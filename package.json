@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "Make a dump of the V8 heap for later inspection.",
   "homepage": "https://github.com/bnoordhuis/node-heapdump",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "author": {
     "name": "s00d",
     "email": "Virus191288@gmail.com"
@@ -16,6 +18,10 @@
   },
   "license": "ISC",
   "scripts": {
+    "clean": "rimraf lib && rimraf dist",
+    "prepublish": "npm run clean && npm run build",
+    "prepare": "npm run build",
+    "build": "tsc",
     "install": "prebuild-install || node-gyp rebuild",
     "test": "tap test/test-* --jobs=1"
   },
@@ -26,6 +32,8 @@
   "devDependencies": {
     "prebuild": "^10.0.1",
     "shelljs": "^0.8.4",
-    "tap": "^15.0.9"
+    "tap": "^15.0.9",
+    "ts-node": "^10.2.1",
+    "typescript": "^4.4.2"
   }
 }
