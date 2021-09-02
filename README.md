@@ -34,8 +34,10 @@ const heapdump = require('heapdump');
 ```
 
 The module exports a single `writeSnapshot([filename], [callback])` function
-that writes out a snapshot.  `filename` defaults to
-`heapdump-<sec>.<usec>.heapsnapshot` when omitted.
+that writes out a snapshot.  `filename` defaults to `heapdump-<sec>.<usec>.heapsnapshot` when omitted.
+You can specify `NODE_HEAPDUMP_FILENAME` env variables, which will be used as template for
+filename (include folder) - `NODE_HEAPDUMP_FILENAME="/var/heapdumps/heapdump-{sec}.{usec}.snapshot"`,
+in case if you want to save snapshots in different folder than application's working directory.
 ```js
 heapdump.writeSnapshot('/var/local/' + Date.now() + '.heapsnapshot');
 ```

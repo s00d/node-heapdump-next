@@ -16,12 +16,15 @@
   },
   "license": "ISC",
   "scripts": {
+    "install": "prebuild-install || node-gyp rebuild",
     "test": "tap test/test-* --jobs=1"
   },
   "dependencies": {
-    "nan": "^2.15.0"
+    "nan": "^2.15.0",
+    "prebuild-install": "^6.1.0"
   },
   "devDependencies": {
+    "prebuild": "^10.0.0",
     "shelljs": "^0.8.4",
     "tap": "^15.0.9"
   }
