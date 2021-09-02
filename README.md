@@ -1,9 +1,9 @@
 [![npm version](https://badge.fury.io/js/heapdump-next.svg)](https://badge.fury.io/js/heapdump-next)
 [![npm downloads](https://img.shields.io/npm/dw/heapdump-next)](https://badge.fury.io/js/heapdump-next)
-[![NPM license](https://img.shields.io/npm/l/heapdump-next)](https://github.com/s00d/heapdump-next/blob/master/LICENSE)
-[![npm type definitions](https://img.shields.io/npm/types/heapdump-next)](https://github.com/s00d/heapdump-next)
+[![NPM license](https://img.shields.io/npm/l/heapdump-next)](https://github.com/s00d/node-heapdump-next/blob/master/LICENSE)
+[![npm type definitions](https://img.shields.io/npm/types/heapdump-next)](https://github.com/s00d/node-heapdump-next)
 [![donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://www.paypal.me/s00d)
-[![GitHub Repo stars](https://img.shields.io/github/stars/s00d/heapdump-next?style=social)](https://github.com/s00d/heapdump-next)
+[![GitHub Repo stars](https://img.shields.io/github/stars/s00d/node-heapdump-next?style=social)](https://github.com/s00d/node-heapdump-next)
 
 # HeapDump next
 ===
