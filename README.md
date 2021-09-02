@@ -60,7 +60,7 @@ heapdump.writeSnapshot(function(err, filename) {
 The snapshot is written synchronously to disk.  When the JS heap is large,
 it may introduce a noticeable "hitch".
 
-Previously, node-heapdump first forked the process before writing the snapshot,
+Previously, heapdump-next first forked the process before writing the snapshot,
 making it effectively asynchronous.  However, it broke the comparison view in
 Chrome DevTools and is fundamentally incompatible with node.js v0.12.  If you
 really want the old behavior and know what you are doing, you can enable it
