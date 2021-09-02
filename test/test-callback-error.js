@@ -14,8 +14,9 @@
 
 'use strict';
 
-var assert = require('assert');
-var heapdump = require('../');
+const assert = require('assert');
+const { Heapdump } = require('../dist');
+const heapdump = new Heapdump
 const {test} = require("tap");
 
 var ncalls = 0;

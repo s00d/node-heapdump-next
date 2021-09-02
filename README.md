@@ -1,4 +1,4 @@
-node-heapdump
+node-heapdump-next
 ===
 
 Make a dump of the V8 heap for later inspection.
@@ -6,11 +6,6 @@ Make a dump of the V8 heap for later inspection.
 ### Install
 ```bash
 npm install heapdump --save
-```
-
-Or, if you are running node.js v0.6 or v0.8:
-```bash
-npm install heapdump@0.1.0 --save
 ```
 
 ### Build
@@ -30,7 +25,11 @@ apt-get install g++
 
 Load the add-on in your application:
 ```js
-const heapdump = require('heapdump');
+const Heapdump = require('heapdump').Heapdump;
+const heapdump = new Heapdump()
+// or
+import { Heapdump } from "heapdump";
+const heapdump = new Heapdump()
 ```
 
 The module exports a single `writeSnapshot([filename], [callback])` function

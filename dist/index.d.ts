@@ -1,3 +1,8 @@
 declare type CB = (err?: null | Error, result?: string) => any;
-declare const writeSnapshot: (filename: string | undefined | CB, cb?: CB | undefined) => boolean;
-export { writeSnapshot };
+declare class Heapdump {
+    private addon;
+    private errno;
+    constructor();
+    writeSnapshot(filename: string | undefined | CB, cb?: CB): boolean;
+}
+export { Heapdump };

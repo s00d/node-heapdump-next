@@ -12,11 +12,12 @@
 // ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 // OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
-var path = require('path');
-var http = require('http');
-var shelljs = require('shelljs');
-var test = require('tap').test;
-var heapdump = require('../');
+const path = require('path');
+const http = require('http');
+const shelljs = require('shelljs');
+const test = require('tap').test;
+const { Heapdump } = require('../dist');
+const heapdump = new Heapdump
 
 process.chdir(__dirname);
 
