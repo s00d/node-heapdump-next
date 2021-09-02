@@ -4,60 +4,84 @@ node-heapdump
 Make a dump of the V8 heap for later inspection.
 
 ### Install
-
-    npm install heapdump
+```bash
+npm install heapdump --save
+```
 
 Or, if you are running node.js v0.6 or v0.8:
-
-    npm install heapdump@0.1.0
+```bash
+npm install heapdump@0.1.0 --save
+```
 
 ### Build
+```bash
+node-gyp configure build
+```
 
-    node-gyp configure build
+You need to have `g++` ane `make` installed to build it.
+
+```bash
+apt-get install make
+apt-get install g++
+
+```
 
 ### Usage
 
 Load the add-on in your application:
-
-    var heapdump = require('heapdump');
+```js
+const heapdump = require('heapdump');
+```
 
 The module exports a single `writeSnapshot([filename], [callback])` function
 that writes out a snapshot.  `filename` defaults to
 `heapdump-<sec>.<usec>.heapsnapshot` when omitted.
-
-    heapdump.writeSnapshot('/var/local/' + Date.now() + '.heapsnapshot');
+```js
+heapdump.writeSnapshot('/var/local/' + Date.now() + '.heapsnapshot');
+```
 
 The function also takes an optional callback function which is called upon
 completion of the heap dump.
-
-    heapdump.writeSnapshot(function(err, filename) {
-      console.log('dump written to', filename);
-    });
+```js
+heapdump.writeSnapshot(function(err, filename) {
+    console.log('dump written to', filename);
+});
+```
 
 The snapshot is written synchronously to disk.  When the JS heap is large,
 it may introduce a noticeable "hitch".
 
+Previously, node-heapdump first forked the process before writing the snapshot,
+making it effectively asynchronous.  However, it broke the comparison view in
+Chrome DevTools and is fundamentally incompatible with node.js v0.12.  If you
+really want the old behavior and know what you are doing, you can enable it
+again by setting `NODE_HEAPDUMP_OPTIONS=fork` in the environment:
+```bash
+$ env NODE_HEAPDUMP_OPTIONS=fork node script.js
+```
+
 On UNIX platforms, you can force a snapshot by sending the node.js process
 a SIGUSR2 signal:
-
-    $ kill -USR2 <pid>
+```bash
+$ kill -USR2 <pid>
+```
 
 The SIGUSR2 signal handler is enabled by default but you can disable it
 by setting `NODE_HEAPDUMP_OPTIONS=nosignal` in the environment:
-
-    $ env NODE_HEAPDUMP_OPTIONS=nosignal node script.js
+```bash
+$ env NODE_HEAPDUMP_OPTIONS=nosignal node script.js
+```
 
 ### Inspecting the snapshot
 
 Open [Google Chrome](https://www.google.com/intl/en/chrome/browser/) and
 press F12 to open the developer toolbar.
 
-Go to the `Memory` tab, right-click in the tab pane and select
+Go to the `Profiles` tab, right-click in the tab pane and select
 `Load profile...`.
 
 Select the dump file and click `Open`.  You can now inspect the heap snapshot
-at your leisure. Some snapshots may take a long time to load, on the order of
-minutes or even hours.
+at your leisure.
 
 Note that Chrome will refuse to load the file unless it has the `.heapsnapshot`
 extension.

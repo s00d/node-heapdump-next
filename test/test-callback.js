@@ -34,9 +34,9 @@ function testFuncCall(test){
 
     function waitForHeapdump(err, filename) {
       var files = shelljs.ls(heapSnapshotFile);
-      test.equals(err, null);
-      test.equals(files.length, 1);
-      test.equals(filename, files[0]);
+      test.equal(err, null);
+      test.equal(files.length, 1);
+      test.equal(filename, files[0]);
       server.close();
       test.end();
     }

@@ -16,10 +16,17 @@
 
 var assert = require('assert');
 var heapdump = require('../');
+const {test} = require("tap");
 
 var ncalls = 0;
-heapdump.writeSnapshot('/does/not/exist', function(err) {
-  assert(/heapdump write error ENOENT/.test(err.message));
-  ncalls++;
-});
-assert(ncalls === 1);
+
+async function testFuncCall(test){
+  await heapdump.writeSnapshot('/does/not/exist', function(err) {
+    assert(/heapdump write error ENOENT/.test(err.message));
+    ncalls++;
+  });
+  test.equal(ncalls, 1);
+}
+
+
+test('Test error', testFuncCall);

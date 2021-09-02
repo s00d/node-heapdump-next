@@ -40,7 +40,7 @@ function testSigUsr2(test){
 
     function waitForHeapdump(){
       var files = shelljs.ls(heapSnapshotFile);
-      test.equals(files.length, 1, 'Heap file should be present');
+      test.equal(files.length, 1, 'Heap file should be present');
       server.close();
       test.end();
     }

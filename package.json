@@ -4,26 +4,25 @@
   "description": "Make a dump of the V8 heap for later inspection.",
   "homepage": "https://github.com/bnoordhuis/node-heapdump",
   "author": {
-    "name": "Ben Noordhuis",
-    "email": "info@bnoordhuis.nl",
-    "url": "http://bnoordhuis.nl/"
+    "name": "s00d",
+    "email": "Virus191288@gmail.com"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/bnoordhuis/node-heapdump.git"
+    "url": "git://github.com/s00d/node-heapdump-next.git"
   },
   "engines": {
     "node": ">=0.10.0"
   },
   "license": "ISC",
   "scripts": {
-    "test": "tap test/test-*"
+    "test": "tap test/test-* --jobs=1"
   },
   "dependencies": {
-    "nan": "^2.13.2"
+    "nan": "^2.15.0"
   },
   "devDependencies": {
-    "shelljs": "~0.3.0",
-    "tap": "~0.4.12"
+    "shelljs": "^0.8.4",
+    "tap": "^15.0.9"
   }
 }
