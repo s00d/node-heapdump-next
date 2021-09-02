@@ -25,7 +25,7 @@ apt-get install g++
 
 Load the add-on in your application:
 ```js
-const Heapdump = require('heapdump').Heapdump;
+const {Heapdump} = require('heapdump');
 const heapdump = new Heapdump()
 // or
 import { Heapdump } from "heapdump";
