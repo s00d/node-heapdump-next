@@ -10,16 +10,32 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  tests:
+    name: Tests
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14 # Need for npm >=7.7
+          cache: 'npm'
+
+      - run: npm i
+      - run: npm test
+
   prebuild-linux:
+    needs: [ 'tests' ]
     name: Linux
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 10
     steps:
       - run: sudo apt-get install g++-multilib
       - uses: actions/setup-node@v2
         with:
           node-version: 14
       - uses: actions/checkout@v2
+
       - run: npm i
       - run: npx prebuild -t 10.0.0 -t 11.0.0 -t 12.0.0 -t 13.0.0 -t 14.0.0 -t 15.0.0 -t 16.0.0 -u ${{ secrets.GITHUB_TOKEN }}
       - run: npx prebuild -t 10.0.0 -t 11.0.0 -t 12.0.0 -t 13.0.0 -t 14.0.0 -t 15.0.0 -t 16.0.0 -a ia32 -u ${{ secrets.GITHUB_TOKEN }}
@@ -27,27 +43,31 @@ jobs:
       - run: npx prebuild -t 7.0.0 -t 8.0.0 -t 9.0.0 -t 10.0.0 -t 11.0.0 -t 12.0.0 -t 13.0.0 -t 14.0.0 -r electron -a ia32 -u ${{ secrets.GITHUB_TOKEN }}
 
   prebuild-macos:
+    needs: [ 'tests' ]
     name: macOS
     runs-on: macos-latest
-    timeout-minutes: 30
+    timeout-minutes: 10
     steps:
       - uses: actions/setup-node@v2
         with:
           node-version: 14
       - uses: actions/checkout@v2
+
       - run: npm i
       - run: npx prebuild -t 10.0.0 -t 11.0.0 -t 12.0.0 -t 13.0.0 -t 14.0.0 -t 15.0.0 -t 16.0.0 -u ${{ secrets.GITHUB_TOKEN }}
       - run: npx prebuild -t 7.0.0 -t 8.0.0 -t 9.0.0 -t 10.0.0 -t 11.0.0 -t 12.0.0 -t 13.0.0 -t 14.0.0 -r electron -u ${{ secrets.GITHUB_TOKEN }}
 
   prebuild-windows:
+    needs: [ 'tests' ]
     name: Windows
     runs-on: windows-latest
-    timeout-minutes: 30
+    timeout-minutes: 10
     steps:
       - uses: actions/setup-node@v2
         with:
           node-version: 14
       - uses: actions/checkout@v2
+
       - run: npm i
       - run: npx prebuild -t 10.0.0 -t 11.0.0 -t 12.0.0 -t 13.0.0 -t 14.0.0 -t 15.0.0 -t 16.0.0 -u ${{ secrets.GITHUB_TOKEN }} --verbose
       - run: npx prebuild -t 7.0.0 -t 8.0.0 -t 9.0.0 -t 10.0.0 -t 11.0.0 -t 12.0.0 -t 13.0.0 -t 14.0.0 -r electron -u ${{ secrets.GITHUB_TOKEN }} --verbose
